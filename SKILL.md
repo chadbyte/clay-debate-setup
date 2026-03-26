@@ -4,7 +4,7 @@ description: Design and prepare a structured debate between Clay Mates. Use this
 license: MIT
 metadata:
   author: chadbyte
-  version: "0.1.0"
+  version: "0.2.0"
 ---
 
 # Clay Debate Setup
@@ -118,10 +118,13 @@ Ask for final confirmation. If the user approves, generate the debate brief.
 
 ## Output: Debate Brief
 
-The debate brief is a JSON object that the debate engine consumes. Output it wrapped in the marker format below.
+When the user approves the setup, write the debate brief as a JSON file to `.clay/debate-brief.json` in the project root.
 
-```
-[[DEBATE_BRIEF:
+**Use the Write tool to create this file.** This is how the debate engine detects that setup is complete.
+
+Example:
+
+```json
 {
   "topic": "Should the EU AI Act be applied as a global standard?",
   "format": "pro_con",
@@ -140,8 +143,9 @@ The debate brief is a JSON object that the debate engine consumes. Output it wra
   ],
   "specialRequests": "Include perspectives from developing nations, not just US vs EU."
 }
-]]
 ```
+
+**File path:** `.clay/debate-brief.json` (relative to project root)
 
 **Field descriptions:**
 - `topic`: the refined, specific debate topic
