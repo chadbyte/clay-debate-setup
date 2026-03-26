@@ -4,7 +4,7 @@ description: Design and prepare a structured debate between Clay Mates. Use this
 license: MIT
 metadata:
   author: chadbyte
-  version: "0.3.0"
+  version: "0.4.0"
 ---
 
 # Clay Debate Setup
@@ -122,7 +122,7 @@ When the user approves the setup, write the debate brief as a JSON file.
 
 **Use the Write tool to create this file.** This is how the debate engine detects that setup is complete.
 
-**CRITICAL: File path.** You are running inside a Mate DM session. Your working directory is the Mate's own directory. Write the brief to `.clay/debate-brief.json` inside this directory. The debate engine watches this exact location. Do NOT write to the user's home directory or any project directory. Run `pwd` to confirm your location, then write to `{result}/.clay/debate-brief.json` as an absolute path.
+**CRITICAL: File path.** The system provides the exact output path in the `## Debate Brief Output Path` section of your initial prompt. Use that absolute path exactly as given. Do NOT guess the path, do NOT use a relative path, and do NOT write to the user's home directory or any other project directory. The debate engine watches this specific location.
 
 Example:
 
