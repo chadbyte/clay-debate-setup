@@ -118,11 +118,9 @@ Ask for final confirmation. If the user approves, generate the debate brief.
 
 ## Output: Debate Brief
 
-When the user approves the setup, write the debate brief as a JSON file.
+When the user approves the setup, call the `propose_debate` MCP tool.
 
-**Use the Write tool to create this file.** This is how the debate engine detects that setup is complete.
-
-**CRITICAL: File path.** The system provides the exact output path in the `## Debate Brief Output Path` section of your initial prompt. Use that absolute path exactly as given. Do NOT guess the path, do NOT use a relative path, and do NOT write to the user's home directory or any other project directory. The debate engine watches this specific location.
+**CRITICAL: Use the `propose_debate` tool, NOT the Write tool.** Do NOT write files to disk for debate proposals. Do NOT mkdir. Do NOT use Bash. The `propose_debate` tool is the ONLY way to submit a debate brief. The tool will show the user an inline approval card and block until they approve or cancel.
 
 Example:
 
@@ -147,7 +145,7 @@ Example:
 }
 ```
 
-**File path:** `.clay/debate-brief.json` (relative to project root)
+**Tool parameters:** Pass `topic`, `format`, `context`, `specialRequests`, and `panelists` (as a JSON string array) to the `propose_debate` tool.
 
 **Field descriptions:**
 - `topic`: the refined, specific debate topic
